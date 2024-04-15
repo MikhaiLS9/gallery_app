@@ -1,0 +1,62 @@
+.custom_select {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  max-width: 265px;
+  width: 100%;
+  min-height: 45px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--backgroud-color);
+}
+
+.label_styles {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  color: var(--font-color);
+  align-items: center;
+  padding: 15px;
+
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 15px;
+  text-align: left;
+}
+
+.span_clouse_btn {
+  display: flex;
+  gap: 10px;
+}
+
+.vector_svg {
+  object-fit: none;
+}
+
+.inputs_container {
+  display: flex;
+  width: 100%;
+  margin-top: 35px;
+  align-items: center;
+  padding: 0px 21px 20px;
+}
+
+.input {
+  max-width: 110px;
+  min-width: 95px;
+  width: 100%;
+  height: 45px;
+  border-radius: 8px;
+  background: var(--input-color);
+  padding-left: 15px;
+}
+.input::placeholder {
+  padding: 15px;
+}
+
+.span {
+  width: 12px;
+  border: 1px solid var(--border-color);
+  margin: 10px;
+}
+

@@ -1,0 +1,16 @@
+.pagination_wrapper {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 40px;
+}
+
+@media (max-width: 1254px) {
+  .pagination_wrapper {
+    margin: 40px;
+  }
+}
+@media (max-width: 1122px) {
+  .pagination_wrapper {
+    justify-content: center;
+  }
+}

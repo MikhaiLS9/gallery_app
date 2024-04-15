@@ -1,0 +1,36 @@
+.button {
+  background: none;
+  border: none;
+}
+
+.close {
+  display: flex;
+  gap: 10px;
+}
+
+
+.pagination {
+  width: 41px;
+  height: 41px;
+  border: 1px solid var(--border-color);
+  background: var(--background-color);
+  cursor: pointer;
+
+  color: var(--font-color);
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 20px;
+  text-transform: uppercase;
+}
+.pagination > img {
+  fill: black;
+}
+.isActive {
+  background-color:var(--font-color);
+  color: var(--background-color)
+}
+
+.pagination:hover {
+  background: #464646;
+}

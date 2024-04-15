@@ -1,0 +1,19 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 35px 0 35px;
+  }
+  
+
+  @media (max-width: 1254px) {
+    .header {
+      margin: 35px 25px  35px;
+    }
+  }
+
+  @media (max-width: 1122px) {
+    .header {
+      justify-content: space-around;
+    }
+  }
