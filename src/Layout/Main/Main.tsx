@@ -1,4 +1,3 @@
-// import styles from "./Main.module.css";
 import Painting from "../../components/Paintings/Paintings";
 import { useSelector } from "react-redux";
 import { RootState } from "../../reducer/store/store";
@@ -29,28 +28,27 @@ function Main({
     authors: authorsState,
     locations: locationsState,
     paintings: paintingsState,
+    before: beforeState,
+    from: fromState,
   } = useSelector((e: RootState) => e.paintings);
 
   const [prevCountPage, setCountPage] = useState<number>(1);
-
   useEffect(() => {
-    if (paintingsState) {
-      setQuery(`?id=${paintingsState}`);
-    } else if (authorsState) {
-      setQuery(`?authorId=${authorsState}`);
-    } else if (locationsState) {
-      setQuery(`?locationId=${locationsState}`);
-    } else {
-      setQuery(`?_limit=${perPage}&_page=${prevCountPage}`);
-    }
-  }, [
-    authorsState,
-    locationsState,
-    paintingsState,
-    perPage,
-    prevCountPage,
-    setQuery,
-  ]);
+    const queryParams = [];
+    
+    if (prevCountPage) queryParams.push(`?_limit=${perPage}`);
+    if (prevCountPage) queryParams.push(`_page=${prevCountPage}`);
+    if (paintingsState) queryParams.push(`id=${paintingsState}`);
+    if (authorsState) queryParams.push(`authorId=${authorsState}`);
+    if (locationsState) queryParams.push(`locationId=${locationsState}`);
+    if (fromState) queryParams.push(`created_gte=${fromState}`);
+    if (beforeState) queryParams.push(`created_lte=${beforeState}`);
+  
+    const queryString = queryParams.join('&');
+    setQuery(queryString);
+  }, [paintingsState, authorsState, locationsState, beforeState, fromState, prevCountPage, perPage, setQuery]);
+  
+  
 
   const filterPainteing = paintingsData.map((item) => {
     const arr = {

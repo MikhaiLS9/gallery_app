@@ -12,6 +12,8 @@
   height: 275px;
   position: relative;
   overflow: hidden;
+  flex-basis: calc(33.333% - 20px);
+  flex-grow: 1;
 }
 .painting_svg {
   overflow: hidden;
@@ -30,7 +32,7 @@
   padding: 10px;
   background: rgba(255, 255, 255, 0.75);
   font-family: Roboto;
-  color: black
+  color: black;
 }
 
 .painting_info h3 {
@@ -71,22 +73,22 @@
   font-family: Roboto;
 }
 .painting_text {
-  color: black
+  color: black;
 }
 
-@media (max-width: 1254px) {
-  .wrapper {
-    justify-content: center
-  }
-}
 
-/* Медиа-запрос для маленьких экранов, например, мобильных телефонов */
-/* @media (max-width: 768px) {
-  .wrapper {
-    grid-template-columns: 1fr; 
-    justify-items: center;
-  }
+@media (max-width: 768px) {
   .painting {
-    width: 100%;
+    flex-basis: calc(50% - 20px);
   }
-} */
+}
+
+@media (max-width: 550px) {
+  .wrapper {
+    justify-content: center;
+  }
+
+  .painting {
+    flex-basis: calc(100% - 20px);
+  }
+}

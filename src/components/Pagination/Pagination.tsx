@@ -1,6 +1,10 @@
 import { useState } from "react";
 import Button from "../Button/Button";
 import styles from './Pagination.module.css'
+import doubleArrowRightSvg from '../../../public/doubleArrowRight.svg'
+import doubleArrowLeftSvg from '../../../public/doubleArrowLeft.svg'
+import ArrowRightSvg from '../../../public/arrowRight.svg'
+import ArrowLeftSvg from '../../../public/arrowLeft.svg'
 
 interface IPagination {
   setCountPage: (value: number) => void;
@@ -54,14 +58,14 @@ function Pagination({ setCountPage, prevCountPage, totalPages }: IPagination) {
   return (
     <div className={styles.pagination_wrapper}>
       <Button appearance="pagination" onClick={goToPreviousPage1}>
-        <img src="doubleArrowLeft.svg" alt="arrow" />
+        <img src={doubleArrowLeftSvg} alt="arrow" />
       </Button>
       <Button
         appearance="pagination"
         onClick={goToPreviousPage}
         disabled={prevCountPage === 1}
       >
-        <img src="arrowLeft.svg" alt="arrow" />
+        <img src={ArrowLeftSvg} alt="arrow" />
       </Button>
       {pageNumbers}
       <Button
@@ -69,10 +73,10 @@ function Pagination({ setCountPage, prevCountPage, totalPages }: IPagination) {
         onClick={goToNextPage}
         disabled={prevCountPage === totalPages}
       >
-        <img src="arrowRight.svg" alt="arrow" />
+        <img src={ArrowRightSvg} alt="arrow" />
       </Button>
       <Button appearance="pagination" onClick={goToNextPage1}>
-        <img src="doubleArrowRight.svg" alt="arrow" />
+        <img src={doubleArrowRightSvg} alt="arrow" />
       </Button>
     </div>
   );

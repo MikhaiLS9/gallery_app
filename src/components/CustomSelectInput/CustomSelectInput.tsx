@@ -4,6 +4,9 @@ import styles from "./CustomSelectInput.module.css";
 import Button from "../Button/Button";
 import { onSubmitType } from "./CustomSelectInput.props";
 
+import closeSvg from "../../../public/close.svg";
+import vectorSvg from "../../../public/vector.svg";
+
 const CustomSelectInput = ({ before, from }: onSubmitType) => {
   const [isOpen, setIsOpen] = useState(false);
   const [fromValue, setFromValue] = useState<string>();
@@ -28,6 +31,8 @@ const CustomSelectInput = ({ before, from }: onSubmitType) => {
   ) => {
     e.preventDefault();
     setIsOpen(!isOpen);
+    from("");
+    before("");
   };
 
   const handleFromChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -51,9 +56,9 @@ const CustomSelectInput = ({ before, from }: onSubmitType) => {
         Created
         <span className={styles.span_clouse_btn}>
           <Button appearance="close" onClick={toggleOpen}>
-            {isOpen && <img src="./close.svg" alt="close" />}
+            {isOpen && <img src={closeSvg} alt="close" />}
           </Button>
-          <img className={styles.vector_svg} src="./vector.svg" alt="vector" />
+          <img className={styles.vector_svg} src={vectorSvg} alt="vector" />
         </span>
       </div>
 

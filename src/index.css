@@ -70,3 +70,27 @@ select {
   --active-li-background :  #000000;
   --active-li-color :  #ffffff;
 }
+
+
+
+  @media (min-width: 1366px) {
+    :root{
+     padding: 0px 134px 0px 134px;
+    }
+  }
+  @media (min-width: 1024px) {
+    :root{
+      padding: 0px 42px 0px 42px;
+     }
+  }
+  @media (min-width: 768px) {
+    :root{
+      padding: 0px 34px 0px 34px;
+     }
+  }
+  @media (min-width: 320px) {
+    :root{
+      padding: 0px 20px 0px 20px;
+     }
+  }
+

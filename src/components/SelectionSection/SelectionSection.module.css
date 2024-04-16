@@ -1,7 +1,7 @@
 .section {
   display: flex;
   width: 100%;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: space-between;
   align-items: flex-start;
   gap: 20px;
@@ -80,8 +80,13 @@
 .span_clouse_btn > img {
   object-fit: contain;
 }
-@media (max-width: 1254px) {
+
+
+@media (max-width: 768px) {
   .section {
-    justify-content: center
+    justify-content: center;
+    flex-wrap: wrap;
+    
+    ;
   }
 }
