@@ -27,28 +27,6 @@ function Main({
   const [prevCountPage, setCountPage] = useState<number>(1);
     //Добавил по заданию Axios
   const [getAuthors, setgetAuthors] = useState<IAuthors[]>([]);
-
-  //Добавил по заданию Axios
-  // В данный момент коллбэк бесполезный из за того, просто написал...
-  // const getAuthorsAxios = useCallback(
-  //   async (
-  //     url: string,
-  //     setgetAuthors: React.Dispatch<React.SetStateAction<IAuthors[]>>
-  //   ) => {
-  //     try {
-  //       const { data } = await axios.get(url);
-  //       setgetAuthors(data);
-  //     } catch (e) {
-  //       const error = e as AxiosError;
-  //       console.log(error);
-  //       return;
-  //     }
-  //   },
-  //   []
-  // );
-  // useEffect(() => {
-  //   getAuthorsAxios(authorsApi,setgetAuthors);
-  // }, [getAuthorsAxios]);
   
   useEffect(() => {
     getAuthorsAxios(authorsApi,setgetAuthors);

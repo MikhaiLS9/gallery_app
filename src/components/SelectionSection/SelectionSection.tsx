@@ -2,10 +2,10 @@ import { useCallback, useState } from "react";
 
 import styles from "./SelectionSection.module.css";
 import CustomSelectInput from "../CustomSelectInput/CustomSelectInput";
-import Button from "../Button/Button";
 import { IHandleToggle, ISelectionSection } from "./SelectionSection.props";
-import vectorSvg from "../../../public/vector.svg";
-import closeSvg from "../../../public/close.svg";
+import SelectionPaintings from "./Selection/SelectionPaintings/Selection";
+import SelectionAuthors from "./Selection/SelectionAuthors/SelectionAuthors";
+import SelectionLocations from "./Selection/SelectionLocations/SelectionLocations";
 
 function SelectionSection({
   paintings,
@@ -45,102 +45,39 @@ function SelectionSection({
     setValueAuthors("Author");
     setIdAuthors("");
   };
-  const resetLocations= () => {
+  const resetLocations = () => {
     setValueLocations("Location");
     setIdLocations("");
   };
   return (
     <section className={styles.section}>
-      <ul className={styles.ul}>
-        <div
-          className={styles.header_wrapper}
-          onClick={() => handleToggle("painting")}
-        >
-          <h3 className={styles.header}>{valuePaintings}</h3>
-          <span className={styles.span_clouse_btn}>
-            {valuePaintings !== "Name" && (
-              <Button appearance="close" onClick={resetPaintings}>
-                {<img src={closeSvg} alt="close" />}
-              </Button>
-            )}
-            <img className={styles.vector_svg} src={vectorSvg} alt="vector" />
-          </span>
-        </div>
-        {toggleStates.painting &&
-          paintings.map((el) => (
-            <li
-              onClick={() => {
-                setIdPaintings(el.id.toString());
-                setValuePaintings(el.name);
-                handleToggle("painting");
-              }}
-              key={el.id}
-            >
-              {el.name}
-            </li>
-          ))}
-      </ul>
-
-      <ul className={styles.ul}>
-        <div
-          className={styles.header_wrapper}
-          onClick={() => handleToggle("author")}
-        >
-          <h3 className={styles.header}> {valueAuthors}</h3>
-          <span className={styles.span_clouse_btn}>
-            {valueAuthors !== "Author" && (
-              <Button appearance="close" onClick={resetAuthors}>
-                {<img src={closeSvg} alt="close" />}
-              </Button>
-            )}
-            <img className={styles.vector_svg} src={vectorSvg} alt="vector" />
-          </span>
-        </div>
-
-        {toggleStates.author &&
-          authors.map((el) => (
-            <li
-              key={el.id}
-              onClick={() => {
-                setIdAuthors(el.id.toString());
-                setValueAuthors(el.name);
-                handleToggle("author");
-              }}
-            >
-              {el.name}
-            </li>
-          ))}
-      </ul>
-      <ul className={styles.ul}>
-        <div
-          className={styles.header_wrapper}
-          onClick={() => handleToggle("location")}
-        >
-          <h3 className={styles.header}> {valueLocations}</h3>
-          <span className={styles.span_clouse_btn}>
-            {valueLocations !== "Location" && (
-              <Button onClick={resetLocations} appearance="close">
-                {<img src={closeSvg} alt="close" />}
-              </Button>
-            )}
-            <img className={styles.vector_svg} src={vectorSvg} alt="vector" />
-          </span>
-        </div>
-
-        {toggleStates.location &&
-          locations.map((el) => (
-            <li
-              key={el.id}
-              onClick={() => {
-                setIdLocations(el.id.toString());
-                setValueLocations(el.location);
-                handleToggle("location");
-              }}
-            >
-              {el.location}
-            </li>
-          ))}
-      </ul>
+      <SelectionPaintings
+        handleToggle={handleToggle}
+        valuePaintings={valuePaintings}
+        resetPaintings={resetPaintings}
+        toggleStates={toggleStates}
+        setIdPaintings={setIdPaintings}
+        setValuePaintings={setValuePaintings}
+        paintings={paintings}
+      />
+      <SelectionAuthors
+        handleToggle={handleToggle}
+        valueAuthors={valueAuthors}
+        resetAuthors={resetAuthors}
+        toggleStates={toggleStates}
+        setIdAuthors={setIdAuthors}
+        setValueAuthors={setValueAuthors}
+        authors={authors}
+      />
+      <SelectionLocations
+        handleToggle={handleToggle}
+        valueLocations={valueLocations}
+        resetLocations={resetLocations}
+        toggleStates={toggleStates}
+        locations={locations}
+        setIdLocations={setIdLocations}
+        setValueLocations={setValueLocations}
+      />
 
       <CustomSelectInput before={setBeforeValue} from={setFromValue} />
     </section>
