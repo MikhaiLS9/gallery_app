@@ -1,10 +1,8 @@
 export interface IPaintings {
-  authorId: number;
-  created: string;
+  authorId: number | string;
+  created: number;
   id: number;
   imageUrl: string;
-  locationId: number;
+  locationId: number | string;
   name: string;
 }
-
-

@@ -7,6 +7,8 @@ import Pagination from "../../components/Pagination/Pagination";
 import { IMain } from "./Main.props";
 import { authorsApi } from "../../helpers/authorsApi";
 import { getAuthorsAxios } from "../../components/getParams/getAuthorParams";
+import ErrorBoundary from "../../ErrorBoundary/ErrorBoundary";
+import { IPaintings } from "../../global_interface/paintings.interface";
 
 function Main({
   totalPages,
@@ -25,16 +27,15 @@ function Main({
   } = useSelector((e: RootState) => e.paintings);
 
   const [prevCountPage, setCountPage] = useState<number>(1);
-    //Добавил по заданию Axios
+  //Добавил по заданию Axios
   const [getAuthors, setgetAuthors] = useState<IAuthors[]>([]);
-  
+
   useEffect(() => {
-    getAuthorsAxios(authorsApi,setgetAuthors);
+    getAuthorsAxios(authorsApi, setgetAuthors);
   }, []);
 
   useEffect(() => {
     const queryParams = [];
-
     if (prevCountPage) queryParams.push(`?_limit=${perPage}`);
     if (prevCountPage) queryParams.push(`_page=${prevCountPage}`);
     if (paintingsState) queryParams.push(`id=${paintingsState}`);
@@ -56,37 +57,30 @@ function Main({
     setQuery,
   ]);
 
-  const filterPainteing = paintingsData.map((item) => {
-    const arr = {
-      authorId: String(item.authorId),
-      created: item.created,
-      id: item.id,
-      imageUrl: item.imageUrl,
-      locationId: String(item.locationId),
-      name: item.name,
-    };
+  const filterPainteing = paintingsData.map((item): IPaintings => {
     const location = locationsData.find((i) => i.id === item.locationId);
-    //без Axios
-    //const author = authorsData.find((i) => i.id === item.authorId);
-    // Добавил по заданию Axios
+    // //без Axios
+    // const author = authorsData.find((i) => i.id === item.authorId);
+    // // Добавил по заданию Axios
     const author = getAuthors.find((i) => i.id === item.authorId);
-    if (author) {
-      arr.authorId = author.name;
-    }
-    if (location) {
-      arr.locationId = location.location;
-    }
-    return arr;
+    return {
+      ...item,
+      locationId: location ? String(location.location) : item.locationId,
+      authorId: author ? String(author.name) : item.authorId,
+    };
   });
 
   return (
     <>
-      <Painting paintings={filterPainteing} />
-      <Pagination
-        setCountPage={setCountPage}
-        prevCountPage={prevCountPage}
-        totalPages={totalPages}
-      />
+      <ErrorBoundary>
+        <Painting paintings={filterPainteing} />
+
+        <Pagination
+          setCountPage={setCountPage}
+          prevCountPage={prevCountPage}
+          totalPages={totalPages}
+        />
+      </ErrorBoundary>
     </>
   );
 }
