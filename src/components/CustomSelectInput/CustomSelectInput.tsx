@@ -6,25 +6,26 @@ import { onSubmitType } from "./CustomSelectInput.props";
 
 import closeSvg from "../../../public/close.svg";
 import vectorSvg from "../../../public/vector.svg";
+import { useDebounce } from "../hooks/debounce/debounce";
 
 const CustomSelectInput = ({ before, from }: onSubmitType) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [fromValue, setFromValue] = useState<string>();
-  const [beforeValue, setBeforeValue] = useState<string>();
+  const [fromValue, setFromValue] = useState<string>("");
+  const [beforeValue, setBeforeValue] = useState<string>("");
+  const debounceSearchFrom = useDebounce(fromValue);
+  const debounceSearchValue = useDebounce(beforeValue);
 
   useEffect(() => {
-    if (fromValue) {
-      return from(fromValue);
+    if (debounceSearchValue) {
+      from(debounceSearchValue);
     }
-
-    return;
-  }, [fromValue, from]);
+  }, [from, debounceSearchValue]);
 
   useEffect(() => {
-    if (beforeValue) {
-      return before(beforeValue);
+    if (debounceSearchFrom) {
+      from(debounceSearchFrom);
     }
-  }, [beforeValue, before]);
+  }, [from, debounceSearchFrom]);
 
   const toggleOpen = (
     e: React.MouseEvent<HTMLDivElement | HTMLButtonElement>
@@ -36,14 +37,14 @@ const CustomSelectInput = ({ before, from }: onSubmitType) => {
   };
 
   const handleFromChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value === "" ? undefined : e.target.value;
+    const value = e.target.value;
     if (value) {
       setFromValue(value);
     }
   };
 
   const handleBeforeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value === "" ? undefined : e.target.value;
+    const value = e.target.value;
     setBeforeValue(value);
   };
 
