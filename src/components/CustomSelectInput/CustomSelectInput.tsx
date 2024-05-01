@@ -7,6 +7,7 @@ import { onSubmitType } from "./CustomSelectInput.props";
 import closeSvg from "../../../public/close.svg";
 import vectorSvg from "../../../public/vector.svg";
 import { useDebounce } from "../hooks/debounce/debounce";
+import React from "react";
 
 const CustomSelectInput = ({ before, from }: onSubmitType) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -88,4 +89,7 @@ const CustomSelectInput = ({ before, from }: onSubmitType) => {
   );
 };
 
-export default CustomSelectInput;
+
+const MemoizedCustomSelectInput = React.memo(CustomSelectInput);
+
+export default MemoizedCustomSelectInput;

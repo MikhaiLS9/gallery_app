@@ -1,11 +1,11 @@
 import FilterSelect from "./Layout/FilterSelect/FilterSelect";
 import Main from "./Layout/Main/Main";
-import MainHeader from "./Layout/MainHeader/MainHeader";
 import { useGetPaintingsApiQuery } from "./service/PaintingsService";
 import { useGetLocationsApiQuery } from "./service/LocationsService";
 import { useEffect, useState } from "react";
 import { useGetAuthorsApiQuery } from "./service/AuthorsService";
 import "typeface-roboto";
+import MemoizedHeader from "./Layout/Header/Header";
 
 function App() {
   const [query, setQuery] = useState<string>("");
@@ -48,7 +48,7 @@ function App() {
         locationsData &&
         authorsData && (
           <>
-            <MainHeader />
+            <MemoizedHeader />
             <FilterSelect />
             <Main
             totalPages={totalPages}

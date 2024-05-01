@@ -3,7 +3,8 @@ import styles from "./Header.module.css";
 import sunSvg from "../../../public/sun.svg";
 import blackSunSvg from "../../../public/blackSun.svg";
 import logoSvg from "../../../public/Logo.svg";
-import Button from "../Button/Button";
+import Button from "../../components/Button/Button";
+import React from "react";
 
 function Header(): JSX.Element {
   const [theme, setTheme] = useState("light");
@@ -27,4 +28,6 @@ function Header(): JSX.Element {
   );
 }
 
-export default Header;
+const MemoizedHeader = React.memo(Header);
+
+export default MemoizedHeader;

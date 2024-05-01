@@ -1,11 +1,11 @@
 import { useCallback, useState } from "react";
 
 import styles from "./SelectionSection.module.css";
-import CustomSelectInput from "../CustomSelectInput/CustomSelectInput";
 import { IHandleToggle, ISelectionSection } from "./SelectionSection.props";
 import SelectionPaintings from "./Selection/SelectionPaintings/Selection";
 import SelectionAuthors from "./Selection/SelectionAuthors/SelectionAuthors";
 import SelectionLocations from "./Selection/SelectionLocations/SelectionLocations";
+import MemoizedCustomSelectInput from "../CustomSelectInput/CustomSelectInput";
 
 function SelectionSection({
   paintings,
@@ -79,7 +79,7 @@ function SelectionSection({
         setValueLocations={setValueLocations}
       />
 
-      <CustomSelectInput before={setBeforeValue} from={setFromValue} />
+      <MemoizedCustomSelectInput before={setBeforeValue} from={setFromValue} />
     </section>
   );
 }
