@@ -1,6 +1,5 @@
 import Button from "../../../Button/Button";
 import styles from "../../SelectionSection.module.css";
-
 import vectorSvg from "../../../../../public/vector.svg";
 import closeSvg from "../../../../../public/close.svg";
 import { SelectionPaintingsProps } from "./SelectionPaintings.props";
@@ -21,7 +20,7 @@ function SelectionPaintings({
         onClick={() => handleToggle("painting")}
       >
         <h3 className={styles.header}>{valuePaintings}</h3>
-        <span className={styles.span_clouse_btn}>
+        <span className={styles.span_close_btn}>
           {valuePaintings !== "Name" && (
             <Button appearance="close" onClick={resetPaintings}>
               {<img src={closeSvg} alt="close" />}
@@ -31,7 +30,7 @@ function SelectionPaintings({
         </span>
       </div>
       {toggleStates.painting &&
-        paintings.map((el) => (
+        paintings?.map((el) => (
           <li
             onClick={() => {
               setIdPaintings(el.id.toString());

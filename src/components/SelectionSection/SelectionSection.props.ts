@@ -3,9 +3,9 @@ import { ILocations } from "../../global_interface/locations.interface";
 import { IPaintings } from "../../global_interface/paintings.interface";
 
 export interface ISelectionSection {
-  paintings: IPaintings[];
-  authors: IAuthors[];
-  locations: ILocations[];
+  paintings: IPaintings[] | undefined;
+  authors: IAuthors[] | undefined;
+  locations: ILocations[] | undefined;
   setIdPaintings: (value: string) => void;
   setIdLocations: (value: string) => void;
   setIdAuthors: (value: string) => void;

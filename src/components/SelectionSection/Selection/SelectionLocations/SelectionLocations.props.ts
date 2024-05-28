@@ -8,5 +8,5 @@ export interface SelectionLocationsProps {
   toggleStates: { painting: boolean; [key: string]: boolean };
   setIdLocations: (id: string) => void;
   setValueLocations: (value: string) => void;
-  locations: ILocations[];
+  locations: ILocations[] | undefined;
 }

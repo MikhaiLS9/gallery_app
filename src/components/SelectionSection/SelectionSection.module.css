@@ -11,7 +11,7 @@
   max-width: 265px;
   width: 100%;
   box-sizing: border-box;
-  border: 1px solid var( --border-color);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   background: rgb(12, 12, 12);
   max-height: 520px;
@@ -70,23 +70,20 @@
   color: var(--active-li-color);
 }
 
-.span_clouse_btn {
+.span_close_btn {
   display: flex;
   justify-content: flex-end;
   padding-right: 15px;
   gap: 10px;
 }
 
-.span_clouse_btn > img {
+.span_close_btn > img {
   object-fit: contain;
 }
-
 
 @media (max-width: 768px) {
   .section {
     justify-content: center;
     flex-wrap: wrap;
-    
-    ;
   }
 }

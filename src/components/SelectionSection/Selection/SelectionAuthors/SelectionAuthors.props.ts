@@ -8,5 +8,5 @@ export interface SelectionAuthorsProps {
   toggleStates: { painting: boolean; [key: string]: boolean };
   setIdAuthors: (id: string) => void;
   setValueAuthors: (value: string) => void;
-  authors: IAuthors[];
+  authors: IAuthors[] | undefined;
 }

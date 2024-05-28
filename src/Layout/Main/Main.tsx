@@ -7,7 +7,6 @@ import Pagination from "../../components/Pagination/Pagination";
 import { IMain } from "./Main.props";
 import { authorsApi } from "../../helpers/authorsApi";
 import { getAuthorsAxios } from "../../components/getParams/getAuthorParams";
-import ErrorBoundary from "../../ErrorBoundary/ErrorBoundary";
 import { IPaintings } from "../../global_interface/paintings.interface";
 
 function Main({
@@ -15,7 +14,6 @@ function Main({
   perPage,
   paintingsData,
   locationsData,
-  // authorsData,   Добавил по заданию Axios
   setQuery,
 }: IMain): JSX.Element {
   const {
@@ -27,11 +25,10 @@ function Main({
   } = useSelector((e: RootState) => e.paintings);
 
   const [prevCountPage, setCountPage] = useState<number>(1);
-  //Добавил по заданию Axios
-  const [getAuthors, setgetAuthors] = useState<IAuthors[]>([]);
+  const [getAuthors, setGetAuthors] = useState<IAuthors[]>([]);
 
   useEffect(() => {
-    getAuthorsAxios(authorsApi, setgetAuthors);
+    getAuthorsAxios(authorsApi, setGetAuthors);
   }, []);
 
   useEffect(() => {
@@ -57,11 +54,8 @@ function Main({
     setQuery,
   ]);
 
-  const filterPainteing = paintingsData.map((item): IPaintings => {
+  const filterPaintings = paintingsData.map((item): IPaintings => {
     const location = locationsData.find((i) => i.id === item.locationId);
-    // //без Axios
-    // const author = authorsData.find((i) => i.id === item.authorId);
-    // // Добавил по заданию Axios
     const author = getAuthors.find((i) => i.id === item.authorId);
     return {
       ...item,
@@ -72,15 +66,15 @@ function Main({
 
   return (
     <>
-      <ErrorBoundary>
-        <Painting paintings={filterPainteing} />
+   
+        <Painting paintings={filterPaintings} />
 
         <Pagination
           setCountPage={setCountPage}
           prevCountPage={prevCountPage}
           totalPages={totalPages}
         />
-      </ErrorBoundary>
+     
     </>
   );
 }

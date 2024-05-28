@@ -21,7 +21,7 @@ function SelectionAuthors({
           onClick={() => handleToggle("author")}
         >
           <h3 className={styles.header}> {valueAuthors}</h3>
-          <span className={styles.span_clouse_btn}>
+          <span className={styles.span_close_btn}>
             {valueAuthors !== "Author" && (
               <Button appearance="close" onClick={resetAuthors}>
                 {<img src={closeSvg} alt="close" />}
@@ -32,7 +32,7 @@ function SelectionAuthors({
         </div>
 
         {toggleStates.author &&
-          authors.map((el) => (
+          authors?.map((el) => (
             <li
               key={el.id}
               onClick={() => {

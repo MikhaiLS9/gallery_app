@@ -20,7 +20,7 @@ function SelectionLocations({
         onClick={() => handleToggle("location")}
       >
         <h3 className={styles.header}> {valueLocations}</h3>
-        <span className={styles.span_clouse_btn}>
+        <span className={styles.span_close_btn}>
           {valueLocations !== "Location" && (
             <Button onClick={resetLocations} appearance="close">
               {<img src={closeSvg} alt="close" />}
@@ -31,7 +31,7 @@ function SelectionLocations({
       </div>
 
       {toggleStates.location &&
-        locations.map((el) => (
+        locations?.map((el) => (
           <li
             key={el.id}
             onClick={() => {

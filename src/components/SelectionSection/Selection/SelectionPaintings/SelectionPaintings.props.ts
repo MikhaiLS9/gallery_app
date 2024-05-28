@@ -8,5 +8,5 @@ export interface SelectionPaintingsProps {
   toggleStates: { painting: boolean; [key: string]: boolean };
   setIdPaintings: (id: string) => void;
   setValuePaintings: (value: string) => void;
-  paintings: IPaintings[];
+  paintings: IPaintings[] | undefined;
 }
